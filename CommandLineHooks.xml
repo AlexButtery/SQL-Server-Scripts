@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<!---->
+<HooksConfig version="1" type="HooksConfig">
+  <Name>Git</Name>
+  <Commands type="Commands" version="2">
+    <element>
+      <key type="string">GetLatest</key>
+      <value version="1" type="GenericHookCommand">
+        <CommandLine></CommandLine>
+        <Verify>exitCode == 0</Verify>
+      </value>
+    </element>
+    <element>
+      <key type="string">Add</key>
+      <value version="1" type="GenericHookCommand">
+        <CommandLine>git add ($Files)</CommandLine>
+        <Verify>exitCode == 0</Verify>
+      </value>
+    </element>
+    <element>
+      <key type="string">Edit</key>
+      <value version="1" type="GenericHookCommand">
+        <CommandLine>git checkout -q ($Files)</CommandLine>
+        <Verify>exitCode == 0</Verify>
+      </value>
+    </element>
+    <element>
+      <key type="string">Delete</key>
+      <value version="1" type="GenericHookCommand">
+        <CommandLine>git rm ($Files)</CommandLine>
+        <Verify>exitCode == 0</Verify>
+      </value>
+    </element>
+    <element>
+      <key type="string">Commit</key>
+      <value version="1" type="GenericHookCommand">
+        <CommandLine>git commit -a -m "($Message)"</CommandLine>
+        <Verify>exitCode == 0</Verify>
+      </value>
+    </element>
+    <element>
+      <key type="string">Revert</key>
+      <value version="1" type="GenericHookCommand">
+        <CommandLine>git reset --hard HEAD</CommandLine>
+        <Verify>exitCode == 0</Verify>
+      </value>
+    </element>
+  </Commands>
+</HooksConfig>
